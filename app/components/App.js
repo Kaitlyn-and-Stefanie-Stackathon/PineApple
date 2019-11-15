@@ -5,10 +5,14 @@ import { createStackNavigator } from "react-navigation-stack";
 import HomeScreen from "./HomeScreen";
 import ProfileScreen from "./ProfileScreen";
 import WelcomeScreen from "./WelcomeScreen";
+import Login from "./Login";
+import SignUp from "./SignUp";
 // import store from "../store/index";
 
 const MainNavigator = createStackNavigator({
   Welcome: { screen: WelcomeScreen },
+  SignUp: { screen: SignUp },
+  Login: { screen: Login },
   Home: { screen: HomeScreen },
   Profile: { screen: ProfileScreen }
 });

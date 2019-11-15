@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, TextInput, ImageBackground, Button } from "react-native";
 import styles from "../../public/styles";
 
-class Login extends Component {
+class SignUp extends Component {
   render() {
     return (
       <ImageBackground
@@ -17,4 +17,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default SignUp;
