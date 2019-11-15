@@ -11,18 +11,20 @@ class WelcomeScreen extends Component {
         style={styles.title}
         source={require("../../public/WelcomePhoto.jpg")}
       >
-        <View>
-          <Button
-            title="Sign Up"
-            onPress={() => navigate("SignUp", { name: "Jane" })}
-          ></Button>
-        </View>
+        <View style={styles.logSignBtn}>
+          <View>
+            <Button
+              title="Sign Up"
+              onPress={() => navigate("SignUp", { name: "Jane" })}
+            ></Button>
+          </View>
 
-        <View>
-          <Button
-            title="Login"
-            onPress={() => navigate("Login", { name: "Jane" })}
-          ></Button>
+          <View>
+            <Button
+              title="Login"
+              onPress={() => navigate("Login", { name: "Jane" })}
+            ></Button>
+          </View>
         </View>
       </ImageBackground>
     );
