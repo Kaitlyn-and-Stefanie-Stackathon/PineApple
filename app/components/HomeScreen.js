@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Button, StyleSheet, View, ImageBackground } from "react-native";
-import { BackGround } from "../../public/BackGround.jpg";
+import styles from "../../public/styles";
 
 // import { AppRegistry, Text, View, TextInput } from "react-native";
 
 class HomeScreen extends Component {
-  static navigationOptions = {
-    title: "PineApple"
-  };
+  // static navigationOptions = {
+  //   title: "PineApple"
+  // };
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -25,19 +25,5 @@ class HomeScreen extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  title: {
-    // backgroundColor: "#F9EBA5",
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-  }
-  // button: {
-  //   backgroundColor: "#2D898B",
-  //   fontSize: 40,
-  //   fontWeight: "bold"
-  // },
-});
 
 export default HomeScreen;
