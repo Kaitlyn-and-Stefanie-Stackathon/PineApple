@@ -9,10 +9,10 @@ import Login from "./app/components/Login";
 import SignUp from "./app/components/SignUp";
 
 import * as firebase from "firebase";
-
 //THIS GUY IS OUR SAVIOUR
 //https://www.youtube.com/watch?v=KnwfK807Mgc&list=PLy9JCsy2u97m-xWAxGwHZ2vITtj4qBKDm&index=1
 // Initialize Firebase
+
 const firebaseConfig = {
   apiKey: "AIzaSyCNFYABpAGemHb26SufVb8U3wc1bDQE_mM",
   authDomain: "pineappleproject-b05f4.firebaseapp.com",

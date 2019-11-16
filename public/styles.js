@@ -11,9 +11,27 @@ const styles = {
     marginBottom: 100,
     color: "white"
   },
+  inputBox: {
+    width: 300,
+    // height: 50,
+    backgroundColor: "#ff914d",
+    borderRadius: 25,
+    paddingHorizontal: 26,
+    fontSize: 22,
+    marginVertical: 20,
+    color: "#ffffff"
+  },
   loginPage: {
-    justifyContent: "center"
-    // height: 100
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  sumbitBtn: {
+    marginTop: 10
+  },
+  sumbitBtnText: {
+    fontSize: 22,
+    color: "#ffffff"
   }
 
   // button: {

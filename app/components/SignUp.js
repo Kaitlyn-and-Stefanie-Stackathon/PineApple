@@ -18,7 +18,7 @@ class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      // username: "",
       email: "",
       password: ""
     };
@@ -30,9 +30,12 @@ class SignUp extends Component {
         alert("Please enter atleast 6 characters");
         return;
       }
+      email = this.state.email;
+      password = this.state.password;
+      username = this.state.username;
       firebase.auth().createUserWithEmailAndPassword(email, password);
 
-      firebase.auth().currentUser.providerData[0].displayName = this.state.username;
+      // firebase.auth().currentUser.providerData[0].displayName = this.state.username;
       // console.log("CURRENT USER", firebase.auth());
 
       this.props.navigation.navigate("Profile");
@@ -47,9 +50,61 @@ class SignUp extends Component {
     return (
       <ImageBackground
         style={styles.title}
-        source={require("../../public/BackGround.jpg")}
+        source={require("../../public/PineAppleBackGround.jpg")}
       >
-        <Container style={styles.loginPage}>
+        <View style={styles.loginPage}>
+          {/* <View>
+            <TextInput
+              style={styles.inputBox}
+              placeholder="Username"
+              placeholderTextColor="#ffffff"
+              onChangeText={username => this.setState({ username })}
+            />
+          </View> */}
+
+          <Item floatingLabel>
+            <Label> Email </Label>
+
+            <Input
+              // style={styles.inputBox}
+              autoCorrect={false}
+              autoCapitalize="none"
+              // placeholderTextColor="#ffffff"
+              onChangeText={email => this.setState({ email })}
+            />
+          </Item>
+
+          <Item floatingLabel>
+            <Label> Password </Label>
+
+            <Input
+              // style={styles.inputBox}
+              secureTextEntry={true}
+              autoCorrect={false}
+              autoCapitalize="none"
+              // placeholderTextColor="#ffffff"
+              onChangeText={password => this.setState({ password })}
+            />
+          </Item>
+
+          <Button
+            style={styles.sumbitBtn}
+            full
+            rounded
+            success
+            onPress={() =>
+              this.signUp(
+                this.state.username,
+                this.state.email,
+                this.state.password
+              )
+            }
+          >
+            <Text style={styles.sumbitBtnText}> Sign Up</Text>
+          </Button>
+        </View>
+
+        {/* <Container style={styles.loginPage}>
           <Form>
             <Item floatingLabel>
               <Label> Username </Label>
@@ -94,7 +149,7 @@ class SignUp extends Component {
               <Text style={{ color: "white" }}> Sign Up</Text>
             </Button>
           </Form>
-        </Container>
+        </Container> */}
       </ImageBackground>
     );
   }

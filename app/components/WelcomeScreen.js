@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, ImageBackground, Button } from "react-native";
+import { View, Text, TextInput, ImageBackground } from "react-native";
 import styles from "../../public/styles";
+import { Button } from "native-base";
 import firebase from "firebase";
 
 // function signIn() {
@@ -21,17 +22,22 @@ class WelcomeScreen extends Component {
         <View style={styles.logSignBtn}>
           <View>
             <Button
-              title="Sign Up"
-              onPress={() => navigate("SignUp", { name: "Jane" })}
-            ></Button>
+              style={styles.inputBox}
+              full
+              onPress={() => navigate("SignUp")}
+            >
+              <Text style={styles.sumbitBtnText}> Sign Up</Text>
+            </Button>
           </View>
 
           <View>
             <Button
-              title="Login"
-              onPress={() => navigate("Login", { name: "Jane" })}
-              // onPress={signIn()}
-            ></Button>
+              style={styles.inputBox}
+              full
+              onPress={() => navigate("Login")}
+            >
+              <Text style={styles.sumbitBtnText}> Login</Text>
+            </Button>
           </View>
         </View>
       </ImageBackground>
