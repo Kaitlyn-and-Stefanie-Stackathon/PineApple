@@ -28,9 +28,7 @@ class Login extends Component {
       firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
-        .then(function(user) {
-          console.log(user);
-        });
+        .then(this.props.navigation.navigate("Profile"));
     } catch (error) {
       console.log(error.toString());
     }

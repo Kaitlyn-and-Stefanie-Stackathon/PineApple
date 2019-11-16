@@ -18,7 +18,7 @@ class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // username: "",
+      username: "",
       email: "",
       password: ""
     };
@@ -31,12 +31,19 @@ class SignUp extends Component {
         return;
       }
       firebase.auth().createUserWithEmailAndPassword(email, password);
+
+      firebase.auth().currentUser.providerData[0].displayName = this.state.username;
+      // console.log("CURRENT USER", firebase.auth());
+
+      this.props.navigation.navigate("Profile");
     } catch (error) {
       console.log(error.toString());
     }
   }
 
   render() {
+    // const { navigate } = this.props.navigation;
+
     return (
       <ImageBackground
         style={styles.title}
@@ -78,7 +85,7 @@ class SignUp extends Component {
               success
               onPress={() =>
                 this.signUp(
-                  // this.state.username,
+                  this.state.username,
                   this.state.email,
                   this.state.password
                 )
