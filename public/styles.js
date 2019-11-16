@@ -8,8 +8,14 @@ const styles = {
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "flex-end",
-    marginBottom: 100
+    marginBottom: 100,
+    color: "white"
+  },
+  loginPage: {
+    justifyContent: "center"
+    // height: 100
   }
+
   // button: {
   //   backgroundColor: "#2D898B",
   //   fontSize: 40,
