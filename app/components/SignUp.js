@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  ImageBackground,
+  ActivityIndicator,
+  Image,
+  TouchableOpacity
+} from "react-native";
 import styles from "../../public/styles";
 import * as firebase from "firebase";
 
@@ -32,10 +40,10 @@ class SignUp extends Component {
       }
       email = this.state.email;
       password = this.state.password;
-      username = this.state.username;
+      // username = this.state.username;
       firebase.auth().createUserWithEmailAndPassword(email, password);
 
-      // firebase.auth().currentUser.providerData[0].displayName = this.state.username;
+      // firebase.auth().currentUser.providerData[0].displayName = username;
       // console.log("CURRENT USER", firebase.auth());
 
       this.props.navigation.navigate("Profile");
@@ -45,13 +53,20 @@ class SignUp extends Component {
   }
 
   render() {
-    // const { navigate } = this.props.navigation;
+    const { navigate } = this.props.navigation;
 
     return (
       <ImageBackground
         style={styles.title}
         source={require("../../public/PineAppleBackGround.jpg")}
       >
+        <TouchableOpacity onPress={() => navigate("Welcome")}>
+          <Image
+            source={require("../../public/Arrow.png")}
+            style={{ height: 40, width: 70, marginTop: 60, marginLeft: 15 }}
+          ></Image>
+        </TouchableOpacity>
+
         <View style={styles.loginPage}>
           {/* <View>
             <TextInput
@@ -66,10 +81,8 @@ class SignUp extends Component {
             <Label> Email </Label>
 
             <Input
-              // style={styles.inputBox}
               autoCorrect={false}
               autoCapitalize="none"
-              // placeholderTextColor="#ffffff"
               onChangeText={email => this.setState({ email })}
             />
           </Item>
@@ -78,11 +91,9 @@ class SignUp extends Component {
             <Label> Password </Label>
 
             <Input
-              // style={styles.inputBox}
               secureTextEntry={true}
               autoCorrect={false}
               autoCapitalize="none"
-              // placeholderTextColor="#ffffff"
               onChangeText={password => this.setState({ password })}
             />
           </Item>

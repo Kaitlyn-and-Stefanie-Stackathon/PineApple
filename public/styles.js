@@ -5,10 +5,10 @@ const styles = {
   },
   logSignBtn: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "flex-end",
-    marginBottom: 100,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 590,
     color: "white"
   },
   inputBox: {

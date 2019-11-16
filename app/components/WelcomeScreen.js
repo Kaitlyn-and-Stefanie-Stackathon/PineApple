@@ -1,8 +1,15 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  ImageBackground,
+  ActivityIndicator
+} from "react-native";
 import styles from "../../public/styles";
 import { Button } from "native-base";
 import firebase from "firebase";
+// import console = require("console");
 
 // function signIn() {
 //   // Sign into Firebase using popup auth & Google as the identity provider.

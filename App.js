@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { AppRegistry, StyleSheet, Text, View } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+import { createSwitchNavigator } from "react-navigation";
 import HomeScreen from "./app/components/HomeScreen";
 import ProfileScreen from "./app/components/ProfileScreen";
 import WelcomeScreen from "./app/components/WelcomeScreen";
 import Login from "./app/components/Login";
 import SignUp from "./app/components/SignUp";
+import LoadingScreen from "./app/components/LoadingScreen";
 
 import * as firebase from "firebase";
 //THIS GUY IS OUR SAVIOUR
@@ -26,17 +28,22 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const MainNavigator = createStackNavigator({
+export default class App extends Component {
+  render() {
+    return <AppNavigator />;
+  }
+}
+
+const MainNavigator = createSwitchNavigator({
   Welcome: { screen: WelcomeScreen },
+  Load: { screen: LoadingScreen },
   Home: { screen: HomeScreen },
   Profile: { screen: ProfileScreen },
   Login: { screen: Login },
   SignUp: { screen: SignUp }
 });
 
-const App = createAppContainer(MainNavigator);
-
-export default App;
+const AppNavigator = createAppContainer(MainNavigator);
 
 // const styles = StyleSheet.create({
 //   container: {
