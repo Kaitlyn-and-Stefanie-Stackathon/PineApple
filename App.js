@@ -36,8 +36,8 @@ export default class App extends Component {
 
 const MainNavigator = createSwitchNavigator({
   Welcome: { screen: WelcomeScreen },
-  Load: { screen: LoadingScreen },
-  Home: { screen: HomeScreen },
+  // Load: { screen: LoadingScreen },
+  // Home: { screen: HomeScreen },
   Profile: { screen: ProfileScreen },
   Login: { screen: Login },
   SignUp: { screen: SignUp }

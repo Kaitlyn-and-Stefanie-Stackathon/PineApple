@@ -24,7 +24,8 @@ const styles = {
   loginPage: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "flex-end",
+    marginTop: 100
   },
   sumbitBtn: {
     marginTop: 10
@@ -32,7 +33,36 @@ const styles = {
   sumbitBtnText: {
     fontSize: 22,
     color: "#ffffff"
+  },
+  textBoxes: {
+    flex: 1,
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "#ffffff",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 150,
+    marginLeft: 40
+  },
+  textBoxesSmall: {
+    flex: 1,
+    fontSize: 22,
+    color: "#ffffff",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 150,
+    marginLeft: 40,
+    marginBottom: 75
   }
+  // profileImage: {
+  //   flex: 1,
+  //   height: 100,
+  //   width: 100,
+  //   alignItems: "center",
+  //   borderRadius: 30,
+  //   borderColor: "#ff914d",
+  //   borderWidth: 10
+  // }
 
   // button: {
   //   backgroundColor: "#2D898B",

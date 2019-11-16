@@ -31,9 +31,9 @@ class Login extends Component {
       password: ""
     };
   }
-  componentDidMount() {
-    this.checkIfLoggedIn();
-  }
+  // componentDidMount() {
+  //   this.checkIfLoggedIn();
+  // }
   checkIfLoggedIn() {
     firebase.auth().onAuthStateChanged(
       function(user) {
@@ -73,13 +73,12 @@ class Login extends Component {
         // Check if we are already signed-in Firebase with the correct user.
         if (!this.isUserEqual(googleUser, firebaseUser)) {
           console.log("firebaseUser", firebaseUser);
-          console.log("User", User);
 
           // Build Firebase credential with the Google ID token.
           var credential = firebase.auth.GoogleAuthProvider.credential(
-            googleUser.getAuthResponse().id_token
-            // googleUser.idToken,
-            // googleUser.accessToken
+            // googleUser.getAuthResponse().id_token
+            googleUser.idToken,
+            googleUser.accessToken
           );
           // Sign in with credential from the Google user.
           firebase
@@ -117,6 +116,8 @@ class Login extends Component {
 
       if (result.type === "success") {
         this.onSignIn(result);
+        this.props.navigation.navigate("Profile"); // MIGHT BE A PROBLEM??
+
         return result.accessToken;
       } else {
         return { cancelled: true };
@@ -152,9 +153,47 @@ class Login extends Component {
           ></Image>
         </TouchableOpacity>
         <View style={styles.loginPage}>
-          <ActivityIndicator size="large" />
+          <Item floatingLabel>
+            <Label> Email </Label>
+
+            <Input
+              autoCorrect={false}
+              autoCapitalize="none"
+              onChangeText={email => this.setState({ email: email })}
+            />
+          </Item>
+
+          <Item floatingLabel>
+            <Label> Password </Label>
+
+            <Input
+              secureTextEntry={true}
+              autoCorrect={false}
+              autoCapitalize="none"
+              onChangeText={password => this.setState({ password: password })}
+            />
+          </Item>
+
+          <Button
+            style={styles.sumbitBtn}
+            full
+            rounded
+            success
+            onPress={() =>
+              this.loginUser(this.state.email, this.state.password)
+            }
+          >
+            <Text style={styles.sumbitBtnText}>Login</Text>
+          </Button>
         </View>
-        <View style={styles.logSignBtn}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "flex-end",
+            marginTop: -450
+          }}
+        >
           <Button
             style={styles.sumbitBtn}
             full
@@ -165,8 +204,19 @@ class Login extends Component {
             <Text style={styles.sumbitBtnText}>Sign In With Google</Text>
           </Button>
         </View>
+      </ImageBackground>
+    );
+  }
+}
 
-        {/* <Container style={styles.loginPage}>
+export default Login;
+
+/*
+{/* <View style={styles.loginPage}>
+          <ActivityIndicator size="large" />
+        </View> */
+
+/*{/* <Container style={styles.loginPage}>
           <Form>
             <Item floatingLabel>
               <Label> Email </Label>
@@ -199,10 +249,4 @@ class Login extends Component {
               <Text style={{ color: "white" }}> Login</Text>
             </Button>
           </Form>
-        </Container> */}
-      </ImageBackground>
-    );
-  }
-}
-
-export default Login;
+        </Container> */
