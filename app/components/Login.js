@@ -84,8 +84,30 @@ class Login extends Component {
           firebase
             .auth()
             .signInWithCredential(credential)
-            .then(function() {
+            .then(function(result) {
               console.log("User Signed In");
+              if (result.additionalUserInfo.isNewUser) {
+                firebase
+                  .database()
+                  .ref("/users/" + result.user.uid)
+                  .set({
+                    gmail: result.user.email,
+                    profile_picture: result.additionalUserInfo.profile.picture,
+                    first_name: result.additionalUserInfo.profile.given_name,
+                    last_name: result.additionalUserInfo.profile.family_name,
+                    created_at: Date.now()
+                  })
+                  .then(function(snapshot) {
+                    // console.log('Snapshot', snapshot);
+                  });
+              } else {
+                firebase
+                  .database()
+                  .ref("/users/" + result.user.uid)
+                  .update({
+                    last_logged_in: Date.now()
+                  });
+              }
             })
             .catch(function(error) {
               // Handle Errors here.

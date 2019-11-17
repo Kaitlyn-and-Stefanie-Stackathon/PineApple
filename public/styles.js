@@ -39,20 +39,20 @@ const styles = {
     fontSize: 28,
     fontWeight: "bold",
     color: "#ffffff",
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
     marginTop: 150,
-    marginLeft: 40
+    // marginLeft: 40
   },
   textBoxesSmall: {
     flex: 1,
     fontSize: 22,
     color: "#ffffff",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 150,
-    marginLeft: 40,
-    marginBottom: 75
+    // justifyContent: "center",
+    alignItems: "center"
+    // marginTop: 150,
+    // marginLeft: 40,
+    // marginBottom: 75
   }
   // profileImage: {
   //   flex: 1,

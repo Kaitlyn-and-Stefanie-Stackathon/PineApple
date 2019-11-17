@@ -8,7 +8,7 @@ class ProfileScreen extends Component {
   constructor() {
     super();
     this.state = {
-      currentUser: firebase.auth().currentUser.providerData[0],
+      // currentUser: firebase.auth().currentUser.providerData[0],
       safeWord: []
     };
   }
@@ -23,13 +23,14 @@ class ProfileScreen extends Component {
     const user = this.state.currentUser;
     return (
       <View style={styles.title}>
-        <Text style={styles.textBoxes}>Welcome, {user.displayName}!</Text>
+        {/* <Text style={styles.textBoxes}>Welcome, {user.displayName}!</Text> */}
         <Text style={styles.textBoxesSmall}>
-          What's a 'PineApple' you ask? It's a code word to get you out a sticky
-          situation. Need to get out of that weird awkward date? Say
-          'PineApple', 'PreCalculus',
-          'supercalifragilisticexpialidocious'...Anything! Just make it unique
-          to you.{" "}
+          What's a 'PineApple' you ask? It's a code word to get you out
+          {"\n"} of a sticky situation.{"\n"}
+          Need to get out of that{"\n"}weird awkward date?{"\n"}Say 'PineApple',
+          'PreCalculus',{"\n"}
+          'supercalifragilisticexpialidocious'{"\n"}...Anything! {"\n"}Just make
+          it unique to you.
         </Text>
         <Text style={styles.textBoxesSmall}>
           You have {this.state.safeWord.length} PineApples
