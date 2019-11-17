@@ -39,20 +39,29 @@ const styles = {
     fontSize: 28,
     fontWeight: "bold",
     color: "#ffffff",
-    // justifyContent: "center",
+    paddingHorizontal: 10,
     alignItems: "center",
-    marginTop: 150,
-    // marginLeft: 40
+    marginTop: 80,
+    marginBottom: -90
   },
   textBoxesSmall: {
     flex: 1,
-    fontSize: 22,
+    fontSize: 15,
     color: "#ffffff",
-    // justifyContent: "center",
+    paddingHorizontal: 10,
+    justifyContent: "center",
     alignItems: "center"
-    // marginTop: 150,
     // marginLeft: 40,
     // marginBottom: 75
+  },
+  list: {
+    flex: 1,
+    backgroundColor: "#ff914d",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  inputPineApples: {
+    marginBottom: 100
   }
   // profileImage: {
   //   flex: 1,
