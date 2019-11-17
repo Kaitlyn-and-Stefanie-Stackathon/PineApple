@@ -2,27 +2,16 @@ import React, { Component } from "react";
 import {
   View,
   Text,
-  TextInput,
   ImageBackground,
-  ActivityIndicator,
   Image,
   TouchableOpacity
 } from "react-native";
 import styles from "../../public/styles";
 import * as firebase from "firebase";
 
-import {
-  Container,
-  Content,
-  Header,
-  Form,
-  Input,
-  Item,
-  Button,
-  Label
-} from "native-base";
+import { Input, Item, Button, Label } from "native-base";
 
-class SignUp extends Component {
+class LoginWithGoogle extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -166,4 +155,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default LoginWithGoogle;

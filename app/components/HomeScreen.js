@@ -5,9 +5,6 @@ import styles from "../../public/styles";
 // import { AppRegistry, Text, View, TextInput } from "react-native";
 
 class HomeScreen extends Component {
-  // static navigationOptions = {
-  //   title: "PineApple"
-  // };
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -18,7 +15,7 @@ class HomeScreen extends Component {
         <View>
           <Button
             title="Go to Jane's profile"
-            onPress={() => navigate("Profile", { name: "Jane" })}
+            onPress={() => navigate("Profile")}
           />
         </View>
       </ImageBackground>
