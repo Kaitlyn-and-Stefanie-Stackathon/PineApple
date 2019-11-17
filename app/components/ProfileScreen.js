@@ -71,7 +71,7 @@ class ProfileScreen extends Component {
         <Text style={styles.textBoxesSmall}>
           You have {this.state.safeWordList.length} PineApples
         </Text>
-        <View>
+        <View style={styles.list}>
           {this.state.safeWordList.map((word, idx) => {
             return (
               <View key={idx}>
@@ -80,26 +80,28 @@ class ProfileScreen extends Component {
             );
           })}
         </View>
-        <Item floatingLabel>
-          <Label> Enter SafeWord (ie 'PineApple') </Label>
+        <Container style={styles.inputPineApples}>
+          <Item floatingLabel>
+            <Label> Enter SafeWord (ie 'PineApple') </Label>
 
-          <Input
-            autoCorrect={false}
-            autoCapitalize="none"
-            onChangeText={word => this.setState({ word })}
-          />
-        </Item>
+            <Input
+              autoCorrect={false}
+              autoCapitalize="none"
+              onChangeText={word => this.setState({ word })}
+            />
+          </Item>
 
-        <Button
-          style={styles.sumbitBtn}
-          full
-          rounded
-          success
-          onPress={() => this.addWord(this.state.word)}
-        >
-          <Text style={styles.sumbitBtnText}>Add PineApple</Text>
-        </Button>
-        {/* </View> */}
+          <Button
+            style={styles.sumbitBtn}
+            full
+            rounded
+            success
+            onPress={() => this.addWord(this.state.word)}
+          >
+            <Text style={styles.sumbitBtnText}>Add PineApple</Text>
+          </Button>
+        </Container>
+
         <View>
           <Button
             title="sign out"

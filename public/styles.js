@@ -53,6 +53,15 @@ const styles = {
     alignItems: "center"
     // marginLeft: 40,
     // marginBottom: 75
+  },
+  list: {
+    flex: 1,
+    backgroundColor: "#ff914d",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  inputPineApples: {
+    marginBottom: 100
   }
   // profileImage: {
   //   flex: 1,
