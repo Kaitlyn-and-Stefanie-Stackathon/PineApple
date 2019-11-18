@@ -40,7 +40,8 @@ const styles = {
     fontWeight: "bold",
     color: "#ffffff",
     paddingHorizontal: 10,
-    alignItems: "center",
+    justifyContent: "center",
+    // alignItems: "center",
     marginTop: 80,
     marginBottom: -90
   },
@@ -49,8 +50,8 @@ const styles = {
     fontSize: 15,
     color: "#ffffff",
     paddingHorizontal: 10,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: "center"
+    // alignItems: "center"
     // marginLeft: 40,
     // marginBottom: 75
   },
@@ -62,6 +63,12 @@ const styles = {
   },
   inputPineApples: {
     marginBottom: 100
+  },
+  transcript: {
+    textAlign: "center",
+    color: "#B0171F",
+    marginBottom: 1,
+    top: "400%"
   }
   // profileImage: {
   //   flex: 1,

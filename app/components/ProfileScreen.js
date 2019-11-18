@@ -19,15 +19,6 @@ import {
 } from "native-base";
 import * as firebase from "firebase";
 import styles from "../../public/styles";
-// import console = require("console");
-
-function ItemList({ title }) {
-  return (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  );
-}
 
 class ProfileScreen extends Component {
   constructor() {
@@ -37,6 +28,20 @@ class ProfileScreen extends Component {
       safeWordList: [],
       word: ""
     };
+  }
+  componentDidMount() {
+    firebase
+      .database()
+      .ref("users")
+      .update({
+        safeWords: this.state.safeWordList
+      })
+      .then(() => {
+        console.log("INSERTED SAFEWORDS INTO FIREBASE!");
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
   signOut() {
     firebase
@@ -50,14 +55,15 @@ class ProfileScreen extends Component {
       word: word
     };
     this.state.safeWordList.push(wordObj);
-    console.log("AFTER WORD OBJ IS PUSHED IN LIST", this.state.safeWordList);
   }
 
   render() {
     // console.log("CURRENT USER", firebase.auth().currentUser);
-    const user = this.state.currentUser;
-    console.log("SAFEWORD LIST", this.state.safeWordList);
+    // console.log("SAFEWORD LIST", this.state.safeWordList);
     // console.log("WORDDDDSS>>>", this.state.word);
+
+    const user = this.state.currentUser;
+
     return (
       <View style={styles.title}>
         <Text style={styles.textBoxes}>Welcome, {user["displayName"]}!</Text>
@@ -99,6 +105,16 @@ class ProfileScreen extends Component {
             onPress={() => this.addWord(this.state.word)}
           >
             <Text style={styles.sumbitBtnText}>Add PineApple</Text>
+          </Button>
+
+          <Button
+            style={styles.sumbitBtn}
+            full
+            rounded
+            success
+            onPress={() => this.props.navigation.navigate("Listen")}
+          >
+            <Text style={styles.sumbitBtnText}>Go to Listen Page</Text>
           </Button>
         </Container>
 

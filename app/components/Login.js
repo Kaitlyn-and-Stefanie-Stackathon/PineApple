@@ -103,7 +103,7 @@ class Login extends Component {
               } else {
                 firebase
                   .database()
-                  .ref("/users/" + result.user.uid)
+                  .ref("users/" + result.user.uid)
                   .update({
                     last_logged_in: Date.now()
                   });
@@ -232,43 +232,3 @@ class Login extends Component {
 }
 
 export default Login;
-
-/*
-{/* <View style={styles.loginPage}>
-          <ActivityIndicator size="large" />
-        </View> */
-
-/*{/* <Container style={styles.loginPage}>
-          <Form>
-            <Item floatingLabel>
-              <Label> Email </Label>
-              <Input
-                autoCorrect={false}
-                autoCapitalize="none"
-                onChangeText={email => this.setState({ email })}
-              />
-            </Item>
-
-            <Item floatingLabel>
-              <Label> Password </Label>
-              <Input
-                secureTextEntry={true}
-                autoCorrect={false}
-                autoCapitalize="none"
-                onChangeText={password => this.setState({ password })}
-              />
-            </Item>
-
-            <Button
-              style={{ marginTop: 10 }}
-              full
-              rounded
-              success
-              onPress={() =>
-                this.loginUser(this.state.email, this.state.password)
-              }
-            >
-              <Text style={{ color: "white" }}> Login</Text>
-            </Button>
-          </Form>
-        </Container> */
