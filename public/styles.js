@@ -1,9 +1,9 @@
 const styles = {
-  // title: {
-  //   backgroundColor: "#93d1b8",
-  //   flex: 1
-  //   // textAlign: "center", // <-- the magic, THIS IS JUST FOR REFERENCE!
-  // },
+  title: {
+    backgroundColor: "#93d1b8",
+    flex: 1
+    // textAlign: "center", // <-- the magic, THIS IS JUST FOR REFERENCE!
+  },
   logSignBtn: {
     flex: 1,
     flexDirection: "column",
@@ -27,7 +27,7 @@ const styles = {
   loginPage: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "flex-end",
+    alignItems: "center",
     marginTop: 100
   },
   sumbitBtn: {
@@ -36,8 +36,7 @@ const styles = {
   sumbitBtnText: {
     fontSize: 22,
     color: "#ffffff",
-    fontWeight: "bold",
-    fontFamily: "Pacifico-Regular" // ITS NOT EFFING WORKING
+    fontWeight: "bold"
   },
   textBoxes: {
     flex: 1,
@@ -67,7 +66,10 @@ const styles = {
   },
   inputPineApples: {
     marginBottom: 100
-  }
+  },
+
+  // BOTTOM NAV
+  bottomIcons: { width: 30, height: 30 }
   // profileImage: {
   //   flex: 1,
   //   height: 100,
