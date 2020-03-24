@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {
   View,
+  Image,
   Text,
   TextInput,
   ImageBackground,
@@ -9,6 +10,8 @@ import {
 import styles from "../../public/styles";
 import { Button } from "native-base";
 import firebase from "firebase";
+import LottieView from "lottie-react-native";
+
 // import console = require("console");
 
 // function signIn() {
@@ -22,10 +25,17 @@ class WelcomeScreen extends Component {
     const { navigate } = this.props.navigation;
 
     return (
-      <ImageBackground
-        style={styles.title}
-        source={require("../../public/WelcomePhoto.jpg")}
-      >
+      <View style={{ flex: 1, backgroundColor: "#93d1b8" }}>
+        <View style={{ justifyContent: "center", alignItems: "center" }}>
+          <Image source={require("../../public/Logo.png")} />
+        </View>
+
+        <LottieView
+          source={require("../../public/People.json")}
+          autoPlay
+          loop
+        />
+
         <View style={styles.logSignBtn}>
           <View>
             <Button
@@ -47,7 +57,7 @@ class WelcomeScreen extends Component {
             </Button>
           </View>
         </View>
-      </ImageBackground>
+      </View>
     );
   }
 }
