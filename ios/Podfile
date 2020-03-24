@@ -34,4 +34,6 @@ target 'PineApple' do
 
   pod 'react-native-voice', :path => '../node_modules/react-native-voice'
 
+  pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
+
 end

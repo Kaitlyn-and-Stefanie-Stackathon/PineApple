@@ -1,20 +1,23 @@
 const styles = {
-  title: {
-    backgroundColor: "#93d1b8",
-    flex: 1
-  },
+  // title: {
+  //   backgroundColor: "#93d1b8",
+  //   flex: 1
+  //   // textAlign: "center", // <-- the magic, THIS IS JUST FOR REFERENCE!
+  // },
   logSignBtn: {
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 590,
+    marginTop: 200,
     color: "white"
   },
   inputBox: {
     width: 300,
     // height: 50,
-    backgroundColor: "#ff914d",
+    borderWidth: 4,
+    borderColor: "black",
+    backgroundColor: "#ffd835",
     borderRadius: 25,
     paddingHorizontal: 26,
     fontSize: 22,
@@ -32,7 +35,9 @@ const styles = {
   },
   sumbitBtnText: {
     fontSize: 22,
-    color: "#ffffff"
+    color: "#ffffff",
+    fontWeight: "bold",
+    fontFamily: "Pacifico-Regular" // ITS NOT EFFING WORKING
   },
   textBoxes: {
     flex: 1,
