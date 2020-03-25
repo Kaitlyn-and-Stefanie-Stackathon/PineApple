@@ -63,12 +63,7 @@ class Profile extends Component {
           >
             {/* INSERT INFO ABOUT USER HERE */}
             <Text>hi</Text>
-            <Button
-              title="SIGN OUT"
-              onPress={() => (
-                this.signOut(), this.props.navigation.navigate("Welcome")
-              )}
-            ></Button>
+            <Button title="SIGN OUT" onPress={() => this.signOut()}></Button>
           </Animated.ScrollView>
         </ImageBackground>
       </View>
