@@ -2,24 +2,15 @@ import React, { Component } from "react";
 import {
   View,
   Text,
+  ScrollView,
   TextInput,
   Image,
-  SafeAreaView,
-  FlatList
+  ImageBackground
 } from "react-native";
-import {
-  Container,
-  Content,
-  Header,
-  Form,
-  Input,
-  Item,
-  Button,
-  Label
-} from "native-base";
+import Animated from "react-native-reanimated";
 import * as firebase from "firebase";
 import styles from "../../public/styles";
-// import console = require("console");
+const HEADER_HEIGHT = 100;
 
 function ItemList({ title }) {
   return (
@@ -38,12 +29,6 @@ class HomeScreen extends Component {
       word: ""
     };
   }
-  signOut() {
-    firebase
-      .auth()
-      .signOut()
-      .then(this.props.navigation.navigate("Welcome"));
-  }
 
   addWord(word) {
     let wordObj = {
@@ -54,71 +39,60 @@ class HomeScreen extends Component {
   }
 
   render() {
+    const scrollY = new Animated.Value(0);
+    const diffClampScrollY = Animated.diffClamp(scrollY, 0, HEADER_HEIGHT);
+    const headerY = Animated.interpolate(diffClampScrollY, {
+      inputRange: [0, HEADER_HEIGHT],
+      outputRange: [0, -HEADER_HEIGHT]
+    });
     return (
-      <View>
-        <Text>HI HOME SCREEN</Text>
+      <View style={{ flex: 1 }}>
+        <Animated.View
+          style={{
+            position: "absolute",
+            height: HEADER_HEIGHT,
+            left: 0,
+            right: 0,
+            top: 0,
+            backgroundColor: "#F0F0F0",
+            zIndex: 1000,
+            transform: [{ translateY: headerY }],
+            alignItems: "center",
+            justifyContent: "center",
+            paddingTop: 40
+          }}
+        >
+          <Image
+            source={require("../../public/small.png")}
+            style={{ height: 50, width: 50 }}
+          />
+        </Animated.View>
+        <ImageBackground
+          source={require("../../public/PineAppleBackGround.jpg")}
+          style={{ flex: 1 }}
+        >
+          <Animated.ScrollView
+            bounces={false}
+            scrollEventThrottle={16}
+            style={{ paddingTop: HEADER_HEIGHT }}
+            onScroll={Animated.event([
+              {
+                nativeEvent: { contentOffset: { y: scrollY } }
+              }
+            ])}
+          >
+            {/* INSERT THE LIST OF WORDS AND ACTIONS HERE */}
+            <Text>hi</Text>
+          </Animated.ScrollView>
+        </ImageBackground>
       </View>
     );
   }
-  // console.log("CURRENT USER", firebase.auth().currentUser);
-  //   const user = this.state.currentUser;
-  //   console.log("SAFEWORD LIST", this.state.safeWordList);
-  //   // console.log("WORDDDDSS>>>", this.state.word);
-  //   return (
-  //     <View style={styles.title}>
-  //       <Text style={styles.textBoxes}>Welcome, {user["displayName"]}!</Text>
-  //       <Text style={styles.textBoxesSmall}>
-  //         What's a 'PineApple' you ask? It's a code word to get you out of a
-  //         sticky situation. Need to get out of that weird awkward date? Say
-  //         'PineApple', 'PreCalculus',
-  //         'supercalifragilisticexpialidocious'...Anything! Just make it unique
-  //         to you.
-  //       </Text>
-  //       <Text style={styles.textBoxesSmall}>
-  //         You have {this.state.safeWordList.length} PineApples
-  //       </Text>
-  //       <View style={styles.list}>
-  //         {this.state.safeWordList.map((word, idx) => {
-  //           return (
-  //             <View key={idx}>
-  //               <Text>{word.word}</Text>
-  //             </View>
-  //           );
-  //         })}
-  //       </View>
-  //       <Container style={styles.inputPineApples}>
-  //         <Item floatingLabel>
-  //           <Label> Enter SafeWord (ie 'PineApple') </Label>
-
-  //           <Input
-  //             autoCorrect={false}
-  //             autoCapitalize="none"
-  //             onChangeText={word => this.setState({ word })}
-  //           />
-  //         </Item>
-
-  //         <Button
-  //           style={styles.sumbitBtn}
-  //           full
-  //           rounded
-  //           success
-  //           onPress={() => this.addWord(this.state.word)}
-  //         >
-  //           <Text style={styles.sumbitBtnText}>Add PineApple</Text>
-  //         </Button>
-  //       </Container>
-
-  //       <View>
-  //         <Button
-  //           title="sign out"
-  //           onPress={() => {
-  //             this.signOut();
-  //           }}
-  //         ></Button>
-  //       </View>
-  //     </View>
-  //   );
-  // }
 }
 
 export default HomeScreen;
+
+/* REFERENCES
+HEADER:
+https://www.youtube.com/watch?v=JPx8IlfYQ-c
+*/

@@ -6,7 +6,7 @@ import Profile from "./Profile";
 import Search from "./Search";
 import Chat from "./ChatRoom";
 import AllChats from "./AllChats";
-import Login from "./Login";
+import Welcome from "./WelcomeScreen";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import styles from "../../public/styles";
 
@@ -16,8 +16,7 @@ const ChatTab = createSwitchNavigator({
 });
 
 const ProfileTab = createSwitchNavigator({
-  Profile: { screen: Profile },
-  Login: { screen: Login }
+  Profile: { screen: Profile }
 });
 const SearchTab = createSwitchNavigator({
   Search: { screen: Search },

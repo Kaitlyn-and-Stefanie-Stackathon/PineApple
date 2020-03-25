@@ -26,12 +26,19 @@ class WelcomeScreen extends Component {
 
     return (
       <View style={{ flex: 1, backgroundColor: "#93d1b8" }}>
-        <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            paddingTop: 30
+          }}
+        >
           <Image source={require("../../public/Logo.png")} />
         </View>
 
         <LottieView
           source={require("../../public/People.json")}
+          style={{ marginTop: 25 }}
           autoPlay
           loop
         />
