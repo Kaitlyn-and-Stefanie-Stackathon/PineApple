@@ -31,7 +31,6 @@ const MainNavigator = createSwitchNavigator(
     // SignUp: { screen: SignUp }
     Login: { screen: Login },
     BottomNavWrapper: { screen: BottomNavWrapper }
-    // Home: { screen: HomeScreen },
   },
   {
     backBehavior: "none"

@@ -113,7 +113,7 @@ class Login extends Component {
         if (user) {
           this.props.navigation.navigate("BottomNavWrapper");
         } else {
-          this.props.navigation.navigate("Welcome");
+          this.props.navigation.navigate("Login"); // IF YOU CHANGE THIS TO "WELCOME", IT WILL ALWAYS STAY IN WELCOME SCREEN
         }
       }.bind(this)
     );
