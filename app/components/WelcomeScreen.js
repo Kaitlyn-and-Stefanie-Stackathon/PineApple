@@ -12,14 +12,6 @@ import { Button } from "native-base";
 import firebase from "firebase";
 import LottieView from "lottie-react-native";
 
-// import console = require("console");
-
-// function signIn() {
-//   // Sign into Firebase using popup auth & Google as the identity provider.
-//   var provider = new firebase.auth.GoogleAuthProvider();
-//   firebase.auth().signInWithPopup(provider);
-// }
-
 class WelcomeScreen extends Component {
   render() {
     const { navigate } = this.props.navigation;

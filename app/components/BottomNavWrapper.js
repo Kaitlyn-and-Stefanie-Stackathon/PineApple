@@ -17,6 +17,7 @@ const ChatTab = createSwitchNavigator({
 
 const ProfileTab = createSwitchNavigator({
   Profile: { screen: Profile }
+  // Welcome: { screen: Welcome }
 });
 const SearchTab = createSwitchNavigator({
   Search: { screen: Search },
