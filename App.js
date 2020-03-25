@@ -40,28 +40,6 @@ const MainNavigator = createSwitchNavigator(
 
 const AppNavigator = createAppContainer(MainNavigator);
 
-// const MainNavigator = createSwitchNavigator(
-//   {
-//     Splash: {screen: Splash},
-//     SignUp: {screen: SignUp},
-//     Login: {screen: Login},
-//   },
-//   {
-//     backBehavior: 'none',
-//   },
-// );
-
-// const AppNavigator = createAppContainer(MainNavigator);
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center"
-//   }
-// });
-
 // // to add more styles, add more objects into the `sytle` variable. An example of this is 37:13 https://www.youtube.com/watch?v=mkualZPRZCs
 
 // AppRegistry.registerComponent("pineapple", () => pineapple);

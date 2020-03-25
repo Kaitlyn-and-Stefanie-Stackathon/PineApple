@@ -113,7 +113,7 @@ class Login extends Component {
         if (user) {
           this.props.navigation.navigate("BottomNavWrapper");
         } else {
-          this.props.navigation.navigate("SignUp");
+          this.props.navigation.navigate("Welcome");
         }
       }.bind(this)
     );

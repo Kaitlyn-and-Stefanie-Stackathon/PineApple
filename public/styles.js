@@ -9,8 +9,8 @@ const styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 200,
-    color: "white"
+    marginTop: 300
+    // color: "white"
   },
   inputBox: {
     width: 300,
@@ -35,7 +35,7 @@ const styles = {
   },
   sumbitBtnText: {
     fontSize: 22,
-    color: "#ffffff",
+    // color: "#ffffff", --> moey said he didn't thinkn the white looked good
     fontWeight: "bold"
   },
   textBoxes: {
