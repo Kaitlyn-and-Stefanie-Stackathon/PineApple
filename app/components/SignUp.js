@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import styles from "../../public/styles";
 import * as firebase from "firebase";
+import firebaseConfig from "../../secrets";
 
 import {
   Container,
@@ -32,7 +33,7 @@ class SignUp extends Component {
     };
   }
 
-  signUp(email, password) {
+  async signUp(email, password) {
     try {
       if (this.state.password < 6) {
         alert("Please enter atleast 6 characters");
@@ -41,12 +42,27 @@ class SignUp extends Component {
       email = this.state.email;
       password = this.state.password;
       // username = this.state.username;
-      firebase.auth().createUserWithEmailAndPassword(email, password);
 
-      // firebase.auth().currentUser.providerData[0].displayName = username;
-      // console.log("CURRENT USER", firebase.auth());
-
-      this.props.navigation.navigate("Profile");
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(cred => {
+          // console.log(cred.user);
+          firebase
+            .firestore()
+            .collection("users")
+            .doc(cred.user.uid)
+            .set({
+              gmail: cred.user.email,
+              profile_picture: `https://firebasestorage.googleapis.com/v0/b/pineappleproject-b05f4.appspot.com/o/images%2FNoUserIcon.png?alt=media&token=56e470a5-3657-4f38-9be6-a05c51dc03f4`, // might need to take out the token???
+              locale: "en",
+              first_name: null,
+              last_name: null,
+              created_at: Date.now(),
+              uid: cred.user.uid
+            });
+          this.props.navigation.navigate("BottomNavWrapper");
+        });
     } catch (error) {
       console.log(error.toString());
     }

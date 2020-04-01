@@ -6,10 +6,12 @@ import {
   TouchableOpacity,
   Image,
   ActivityIndicator,
+  TextInput,
   Button
 } from "react-native";
 import styles from "../../public/styles";
 import firebase from "firebase";
+import { firebaseApp, db, config } from "../../secrets";
 import * as Google from "expo-google-app-auth";
 
 // import {
@@ -28,12 +30,21 @@ class Login extends Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      errorMessage: null
     };
   }
   componentDidMount() {
     this.checkIfLoggedIn();
   }
+
+  loginUser = () => {
+    const { email, password } = this.state;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(error => this.setState({ errorMessage: error.message }));
+  };
 
   isUserEqual = (googleUser, firebaseUser) => {
     if (firebaseUser) {
@@ -70,16 +81,36 @@ class Login extends Component {
             .signInWithCredential(credential)
             .then(function(result) {
               console.log("User logged in", result);
+
+              if (result.additionalUserInfo.isNewUser) {
+                firebase
+                  .firestore()
+                  .collection("users")
+                  .doc(result.user.uid)
+                  .set({
+                    gmail: result.user.email,
+                    profile_picture: result.additionalUserInfo.profile.picture,
+                    locale: result.additionalUserInfo.profile.locale,
+                    first_name: result.additionalUserInfo.profile.given_name,
+                    last_name: result.additionalUserInfo.profile.family_name,
+                    created_at: Date.now(),
+                    uid: result.user.uid
+                  });
+              } else {
+                firebase
+                  .firestore()
+                  .collection("users")
+                  .doc(result.user.uid)
+                  .update({
+                    last_logged_in: Date.now()
+                  });
+              }
             })
             .catch(function(error) {
-              // Handle Errors here.
               var errorCode = error.code;
               var errorMessage = error.message;
-              // The email of the user's account used.
               var email = error.email;
-              // The firebase.auth.AuthCredential type that was used.
               var credential = error.credential;
-              // ...
             });
         } else {
           console.log("User already signed-in Firebase.");
@@ -125,6 +156,30 @@ class Login extends Component {
     return (
       <View style={styles.loginPage}>
         <Text>LOGGIN PAGE</Text>
+
+        <TextInput
+          style={styles.loginPage}
+          underlineColorAndroid="transparent"
+          placeholder="Email"
+          placeholderTextColor="#9a73ef"
+          autoCapitalize="none"
+          onChangeText={email => this.setState({ email })}
+          value={this.state.email}
+        />
+
+        <TextInput
+          style={styles.loginPage}
+          underlineColorAndroid="transparent"
+          placeholder="Password"
+          placeholderTextColor="#9a73ef"
+          autoCapitalize="none"
+          secureTextEntry={true}
+          onChangeText={password => this.setState({ password })}
+          value={this.state.password}
+        />
+
+        <Button title="Sign In" onPress={this.loginUser} />
+
         <Button
           title="SIGN IN WITH GOOGLE"
           onPress={() => this.signInWithGoogleAsync()}
