@@ -20,6 +20,7 @@ target 'PineApple' do
     'RCTVibration',
     'RCTWebSocket',
   ]
+  pod 'Firebase/Storage'
 
   pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
 

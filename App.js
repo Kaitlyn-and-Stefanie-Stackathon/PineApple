@@ -18,9 +18,9 @@ import BottomNavWrapper from "./app/components/BottomNavWrapper";
 export default class App extends Component {
   render() {
     return (
-      // <Provider store={store}>
-      <AppNavigator />
-      // </Provider>
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
     );
   }
 }
@@ -28,7 +28,7 @@ export default class App extends Component {
 const MainNavigator = createSwitchNavigator(
   {
     Welcome: { screen: WelcomeScreen },
-    // SignUp: { screen: SignUp }
+    SignUp: { screen: SignUp },
     Login: { screen: Login },
     BottomNavWrapper: { screen: BottomNavWrapper }
   },
